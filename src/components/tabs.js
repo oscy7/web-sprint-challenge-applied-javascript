@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const Tabs = (topics) => {
   // TASK 3
   // ---------------------
@@ -16,44 +18,29 @@ const Tabs = (topics) => {
 
   const topic = document.createElement('div');
 
-  const tabs = [];
-  for(let i = 0; i < 4; i++){
-    tabs.push(document.createElement('div'))
+  //const tabs = [];
+  for(let i = 0; i < topics.length; i++){
+    const x = document.createElement('div');
+    x.classList.add('tab');
+    //tabs.push(x);
+    console.log(topics[i])
+    x.textContent = topics[i];
+    topic.appendChild(x);
   }
-
-  tabs.forEach(element => {
-    element.classList.add('tab')
-  });
-
-  // tabs.forEach(element => {
-  //   topic.appendChild(element);
-  // });
-
-  topic.appendChild(tabs[0])
-  topic.appendChild(tabs[1])
-  topic.appendChild(tabs[2])
   topic.classList.add('topics');
-
   
   console.log(topic)
-  console.log(tabs)
-  // const tab1 = document.createElement('div');
-  // const tab2 = document.createElement('div');
-  // const tab3 = document.createElement('div');
+  //console.log(tabs)
 
-  // topic.appendChild(tab1);
-  // topic.appendChild(tab2);
-  // topic.appendChild(tab3);
-
-  
-  
-return topic
+  return topic
 
 }
+const myFx = Tabs(['Javascript', 'python', 'potato']);
+console.log(myFx)
 
-Tabs();
+// const mySelectorTwo = document.querySelector('.topics').appendChild(Tabs(['Javascript', 'python', 'potato']))
 
-
+// mySelectorTwo
 
 
 const tabsAppender = (selector) => {
@@ -64,6 +51,18 @@ const tabsAppender = (selector) => {
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
+  const tabsSelector = document.querySelector(selector);
+
+  axios.get('http://localhost:5000/api/topics')
+  .then(resp => {
+    console.log('this is working')
+    const tabs = Tabs(resp);
+    tabsSelector.appendChild(tabs);
+  })
+  .catch(error => {
+    console.log(error)
+  })
+
 }
 
 export { Tabs, tabsAppender }
