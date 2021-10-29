@@ -1,4 +1,4 @@
-import { query } from "express";
+//import { query } from "express";
 
 const Header = (title, date, temp) => {
   // TASK 1
@@ -42,11 +42,12 @@ const headerAppender = (selector) => {
   // It should create a header using the Header component above, passing arguments of your choosing.
   // It should append the header to the element in the DOM that matches the given selector.
   //
-  const mySelector = document.querySelector(selector)
+  const mySelector = document.querySelector(selector).appendChild(Header())
 
-  mySelector.appendChild(Header(title, date, temp));
-
+  return mySelector
 }
+
+headerAppender('header-selector')
 
 
 export { Header, headerAppender }
