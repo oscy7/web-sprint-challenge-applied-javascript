@@ -14,10 +14,47 @@ const Tabs = (topics) => {
   // </div>
   //
 
+  const topic = document.createElement('div');
+
+  const tabs = [];
+  for(let i = 0; i < 4; i++){
+    tabs.push(document.createElement('div'))
+  }
+
+  tabs.forEach(element => {
+    element.classList.add('tab')
+  });
+
+  // tabs.forEach(element => {
+  //   topic.appendChild(element);
+  // });
+
+  topic.appendChild(tabs[0])
+  topic.appendChild(tabs[1])
+  topic.appendChild(tabs[2])
+  topic.classList.add('topics');
 
   
+  console.log(topic)
+  console.log(tabs)
+  // const tab1 = document.createElement('div');
+  // const tab2 = document.createElement('div');
+  // const tab3 = document.createElement('div');
+
+  // topic.appendChild(tab1);
+  // topic.appendChild(tab2);
+  // topic.appendChild(tab3);
+
+  
+  
+return topic
 
 }
+
+Tabs();
+
+
+
 
 const tabsAppender = (selector) => {
   // TASK 4
