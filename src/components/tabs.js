@@ -23,24 +23,21 @@ const Tabs = (topics) => {
     const x = document.createElement('div');
     x.classList.add('tab');
     //tabs.push(x);
-    console.log(topics[i])
+    //console.log(topics[i])
     x.textContent = topics[i];
     topic.appendChild(x);
   }
   topic.classList.add('topics');
   
-  console.log(topic)
+  //console.log(topic)
   //console.log(tabs)
 
   return topic
 
 }
-const myFx = Tabs(['Javascript', 'python', 'potato']);
-console.log(myFx)
 
-// const mySelectorTwo = document.querySelector('.topics').appendChild(Tabs(['Javascript', 'python', 'potato']))
 
-// mySelectorTwo
+//Tabs(['potato', 'candy'])
 
 
 const tabsAppender = (selector) => {
@@ -53,16 +50,18 @@ const tabsAppender = (selector) => {
   //
   const tabsSelector = document.querySelector(selector);
 
-  axios.get('http://localhost:5000/api/topics')
+  axios.get(`http://localhost:5001/api/topics`)
   .then(resp => {
-    console.log('this is working')
-    const tabs = Tabs(resp);
+    console.log(resp)
+    const tabs = Tabs(resp.data.topics);
     tabsSelector.appendChild(tabs);
   })
   .catch(error => {
     console.log(error)
   })
-
+  
 }
+
+tabsAppender('.tabs-container');
 
 export { Tabs, tabsAppender }
