@@ -24,16 +24,23 @@ const Card = (article) => {
   const imgSRC = document.createElement('img');
   const authorSpan = document.createElement('span');
 
-  card.appendChild('headlineDiv');
-  card.appendChild('authorDiv');
-  authorDiv.appendChild('imgDiv');
-  imgDiv.appendChild('imgSRC');
-  authorDiv.appendChild('authorSpan');
+  card.appendChild(headlineDiv);
+  card.appendChild(authorDiv);
+  authorDiv.appendChild(imgDiv);
+  imgDiv.appendChild(imgSRC);
+  authorDiv.appendChild(authorSpan);
 
   card.classList.add('card');
   headlineDiv.classList.add('author');
   imgDiv.classList.add('img-container');
 
+  headlineDiv.textContent = `${article.headline}`
+  imgSRC.setAttribute = ('src', `${article.authorPhoto}`)
+  authorSpan.textContent = `${article.authorName}`
+
+  card.addEventListener('click', () => {
+    console.log(`${article.headline}`)
+  })
 
 
 }
