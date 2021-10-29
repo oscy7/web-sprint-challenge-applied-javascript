@@ -32,9 +32,12 @@ const Card = (article) => {
 
   card.classList.add('card');
   headlineDiv.classList.add('author');
-  
+  imgDiv.classList.add('img-container');
+
+
 
 }
+console.log('hi')
 
 const cardAppender = (selector) => {
   // TASK 6
