@@ -63,7 +63,7 @@ const cardAppender = (selector) => {
   .then(resp => {
     
     const myArray = Object.values(resp.data.articles)
-    console.log(myArray)
+    //console.log(myArray)
     //cardSelector.appendChild(Card(myArray))
     myArray.forEach(element => {
       element.forEach( x =>{
